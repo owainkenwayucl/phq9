@@ -1,3 +1,5 @@
 load "phq9logo
+home
 run_phq9
+userpause
 bye
