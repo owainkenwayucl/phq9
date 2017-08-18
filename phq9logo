@@ -1,0 +1,58 @@
+; Generic procedure to get info from user.
+to ask_question :q 
+  print :q
+  make "temp readword
+
+; Check that user input is a valid answer else recurse.
+  if not number? :temp [ask_question :q ]
+  if less? :temp 0 [ask_question :q ]
+  if greater? :temp 3 [ask_question :q ]
+
+  make "answer :temp
+
+end
+
+; Effectively our main method.
+to run_phq9
+
+  print [ ]
+  print [PHQ-9 testing tool]
+  print [==================]
+  print [ ]
+  print [For each of the following questions answer:]
+  print [ 0 - Not at all]
+  print [ 1 - Several days]
+  print [ 2 - More than half the days]
+  print [ 3 - Nearly every day]
+  print []
+  print [Over the last two weeks, how often have you been bothered by any of the following problems?]
+  print []
+
+  make "score 0
+
+  make "qs [[Little interest or pleasure in doing things?] 
+            [Feeling down, depressed, or hopeless?]
+            [Trouble falling or staying asleep, or sleeping too much?]
+            [Feeling tired or having little energy?]
+            [Poor appetite or overeating?]
+            [Feeling bad about yourself - or that you are a failure or have let yourself or your family down?]
+            [Trouble concentrating on things, such as reading the newspaper or watching television?]
+            [Moving or speaking so slowly that other people could have noticed?
+Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual?]
+            [Thoughts that you would be better off dead, or of hurting yourself in some way?]]
+
+  foreach qs [ask_question ? make "score sum :score :answer ]
+
+  print [] 
+  print [Depression severity: ]
+  if less? :score 5 [print [\ None]]
+  if and less? :score 10 greater? :score 4 [print [\ Mild]]
+  if and less? :score 15 greater? :score 9 [print [\ Moderate]]
+  if and less? :score 20 greater? :score 14 [print [\ Moderately severe]]
+  if greater? :score 19 [print [\ Severe]]
+
+  print []
+  print sentence [Score:] :score  
+  print []
+
+end
