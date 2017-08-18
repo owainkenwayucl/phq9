@@ -1,4 +1,4 @@
-#PHQ-9 test implemented in UCBLogo
+# PHQ-9 test implemented in UCBLogo
 
 To run, install UCBLogo and then run:
 
