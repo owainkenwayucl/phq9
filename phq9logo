@@ -2,13 +2,13 @@
 to ask_question :q 
   print :q
   make "temp readword
+  print []
 
 ; Check that user input is a valid answer else recurse.
-  if not number? :temp [ask_question :q ]
-  if less? :temp 0 [ask_question :q ]
-  if greater? :temp 3 [ask_question :q ]
-  print []
-  make "answer :temp
+  if not number? :temp [output ask_question :q ]
+  if less? :temp 0 [output ask_question :q ]
+  if greater? :temp 3 [output ask_question :q ]
+  output :temp
 end
 
 ; Wait for user to press return.
@@ -46,7 +46,7 @@ to run_phq9
 Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual?]
             [Thoughts that you would be better off dead, or of hurting yourself in some way?]]
 
-  foreach qs [ask_question ? make "score sum :score :answer ]
+  foreach qs [make "score sum :score ask_question ? ]
 
   print [] 
   print [Depression severity: ]
