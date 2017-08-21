@@ -7,9 +7,8 @@ to ask_question :q
   if not number? :temp [ask_question :q ]
   if less? :temp 0 [ask_question :q ]
   if greater? :temp 3 [ask_question :q ]
-
+  print []
   make "answer :temp
-
 end
 
 ; Wait for user to press return.
@@ -20,7 +19,6 @@ end
 
 ; Effectively our main method.
 to run_phq9
-  load "faces
 
   print [ ]
   print [PHQ-9 testing tool]
@@ -33,12 +31,8 @@ to run_phq9
   print [ 3 - Nearly every day]
   print []
  
-  userpause
-  home
- 
   print [Over the last two weeks, how often have you been bothered by any of the following problems?]
   print []
-
   make "score 0
 
   make "qs [[Little interest or pleasure in doing things?] 
@@ -56,14 +50,12 @@ Or the opposite - being so fidgety or restless that you have been moving around 
 
   print [] 
   print [Depression severity: ]
-  if less? :score 5 [print [\ None] happyface]
-  if and less? :score 10 greater? :score 4 [print [\ Mild] neutralface]
-  if and less? :score 15 greater? :score 9 [print [\ Moderate] neutralface]
-  if and less? :score 20 greater? :score 14 [print [\ Moderately severe]sadface]
-  if greater? :score 19 [print [\ Severe] sadface]
-
+  if less? :score 5 [print [\ None]]
+  if and less? :score 10 greater? :score 4 [print [\ Mild]]
+  if and less? :score 15 greater? :score 9 [print [\ Moderate]]
+  if and less? :score 20 greater? :score 14 [print [\ Moderately severe]]
+  if greater? :score 19 [print [\ Severe]]
   print []
   print sentence [Score:] :score  
   print []
-
 end
