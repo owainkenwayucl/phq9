@@ -1,3 +1,3 @@
-load "phq9logo
+load "phq9logo.lgo
 run_phq9
 bye
