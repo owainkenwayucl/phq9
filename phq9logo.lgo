@@ -35,7 +35,7 @@ to run_phq9
   print []
   make "score 0
 
-  make "qs [[Little interest or pleasure in doing things?] 
+  make "qs [[Little interest or pleasure in doing things]
             [Feeling down, depressed, or hopeless?]
             [Trouble falling or staying asleep, or sleeping too much?]
             [Feeling tired or having little energy?]
@@ -46,16 +46,22 @@ to run_phq9
 Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual?]
             [Thoughts that you would be better off dead, or of hurting yourself in some way?]]
 
-  foreach qs [make "score sum :score ask_question ? ]
+  make "answers []
+
+  foreach qs [make "answer ask_question ?
+              make "answers lput :answer :answers
+              make "score sum :score :answer
+             ]
 
   print [] 
-  print [Depression severity: ]
-  if less? :score 5 [print [\ None]]
-  if and less? :score 10 greater? :score 4 [print [\ Mild]]
-  if and less? :score 15 greater? :score 9 [print [\ Moderate]]
-  if and less? :score 20 greater? :score 14 [print [\ Moderately severe]]
-  if greater? :score 19 [print [\ Severe]]
-  print []
-  print sentence [Score:] :score  
+
+  if less? :score 5 [make "diag "None]
+  if and less? :score 10 greater? :score 4 [make "diag "Mild]
+  if and less? :score 15 greater? :score 9 [make "diag "Moderate]
+  if and less? :score 20 greater? :score 14 [make "diag sentence "Moderately "severe]
+  if greater? :score 19 [make "diag "Severe]
+  print sentence [\ Depression severity:] :diag
+  print sentence [\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Score:] :score 
+  print sentence [\ \ \ \ \ \ \ \ \ \ \ \ \ \ Report:] :answers 
   print []
 end
