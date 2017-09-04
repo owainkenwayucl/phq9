@@ -14,3 +14,5 @@ Alternatively, from within UCBLogo you can run:
 load "phq9logo.lgo
 run_phq9
 ```
+
+The copyright of the questions is owned by Pfizer who have kindly [released the questions freely for use without charge or copyright restriction](http://press.pfizer.com/press-release/pfizer-offer-free-public-access-mental-health-assessment-tools-improve-diagnosis-and-p).  Thanks Pfizer!
