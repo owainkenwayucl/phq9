@@ -35,7 +35,7 @@ to run_phq9
   print []
   make "score 0
 
-  make "qs [[Little interest or pleasure in doing things]
+  make "qs [[Little interest or pleasure in doing things?]
             [Feeling down, depressed, or hopeless?]
             [Trouble falling or staying asleep, or sleeping too much?]
             [Feeling tired or having little energy?]
