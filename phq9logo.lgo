@@ -1,8 +1,8 @@
 ; Generic procedure to get info from user.
 to ask_question :q 
-  print :q
+  type :q
+  type [\ ]
   make "temp readword
-  print []
 
 ; Check that user input is a valid answer else recurse.
   if not number? :temp [output ask_question :q ]
